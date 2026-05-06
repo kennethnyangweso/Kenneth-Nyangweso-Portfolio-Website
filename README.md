@@ -1,4 +1,5 @@
-# 🌐 Kenneth Nyangweso - Data Science & AI Portfolio
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/7d440f69-f557-455c-93db-168804a2fec9" />
+
 
 ## 📋 About This Repository
 
