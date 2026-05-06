@@ -33,6 +33,7 @@
             top: 0;
             border-bottom: 1px solid #3b82f6;
             margin-bottom: 2rem;
+            z-index: 100;
         }
 
         .nav-flex {
@@ -119,21 +120,53 @@
             text-align: center;
         }
 
-        .profile-placeholder {
-            width: 200px;
-            height: 200px;
-            background: #1e293b;
+        /* FIXED PROFILE IMAGE - NO SQUEEZING */
+        .profile-pic {
+            width: 250px;
+            height: 250px;
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto;
-            border: 3px solid #3b82f6;
+            object-fit: cover;
+            object-position: center;
+            border: 4px solid #3b82f6;
+            box-shadow: 0 0 20px rgba(59,130,246,0.3);
         }
 
-        .profile-placeholder i {
-            font-size: 5rem;
+        /* Skills Section */
+        .skills-section {
+            margin: 3rem 0;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .skill-category {
+            background: #11141c;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            border: 1px solid #243150;
+        }
+
+        .skill-category h3 {
             color: #3b82f6;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .skill-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-item {
+            background: #1e2a3a;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
         }
 
         /* Section Titles */
@@ -147,7 +180,7 @@
         /* Project Grid */
         .project-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
             gap: 1.5rem;
             margin: 2rem 0;
         }
@@ -187,7 +220,7 @@
             background: #1e2a3a;
             padding: 0.2rem 0.6rem;
             border-radius: 15px;
-            font-size: 0.7rem;
+            font-size: 0.65rem;
         }
 
         .project-links {
@@ -199,11 +232,37 @@
         .project-links a {
             color: #3b82f6;
             text-decoration: none;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
 
         .project-links a:hover {
             text-decoration: underline;
+        }
+
+        /* Metrics */
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .metric {
+            background: #1e293b;
+            padding: 0.5rem;
+            text-align: center;
+            border-radius: 8px;
+        }
+
+        .metric-value {
+            font-size: 1rem;
+            font-weight: bold;
+            color: #3b82f6;
+        }
+
+        .metric-label {
+            font-size: 0.65rem;
+            color: #94a3b8;
         }
 
         /* About Section */
@@ -240,7 +299,7 @@
         .contact-info {
             display: flex;
             justify-content: center;
-            gap: 2rem;
+            gap: 1.5rem;
             flex-wrap: wrap;
             margin: 1.5rem 0;
         }
@@ -250,7 +309,7 @@
             align-items: center;
             gap: 0.5rem;
             background: #1e293b;
-            padding: 0.5rem 1rem;
+            padding: 0.6rem 1.2rem;
             border-radius: 25px;
         }
 
@@ -261,6 +320,10 @@
         .contact-item a {
             color: white;
             text-decoration: none;
+        }
+
+        .contact-item a:hover {
+            color: #3b82f6;
         }
 
         .contact-icons {
@@ -285,12 +348,6 @@
             color: #5e6f8d;
         }
 
-        @media (max-width: 768px) {
-            .hero-text h1 { font-size: 2rem; }
-            .nav-flex { flex-direction: column; gap: 1rem; }
-            .project-grid { grid-template-columns: 1fr; }
-        }
-
         .btn {
             background: #3b82f6;
             color: white;
@@ -300,24 +357,15 @@
             display: inline-block;
         }
 
-        .metrics {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 0.5rem;
-            margin: 1rem 0;
+        .btn:hover {
+            background: #2563eb;
         }
 
-        .metric {
-            background: #1e293b;
-            padding: 0.5rem;
-            text-align: center;
-            border-radius: 8px;
-        }
-
-        .metric-value {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: #3b82f6;
+        @media (max-width: 768px) {
+            .hero-text h1 { font-size: 2rem; }
+            .nav-flex { flex-direction: column; gap: 1rem; }
+            .project-grid { grid-template-columns: 1fr; }
+            .profile-pic { width: 180px; height: 180px; }
         }
     </style>
 </head>
@@ -328,10 +376,10 @@
             <div class="logo">Kenneth Nyangweso</div>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
-                <li><a href="#projects">Projects</a></li>
                 <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="https://github.com/kenneth-nyangweso">GitHub</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Connect</a></li>
             </ul>
         </div>
     </nav>
@@ -341,21 +389,92 @@
         <section id="home" class="hero">
             <div class="container hero-grid">
                 <div class="hero-text">
-                    <div class="hero-badge">Data Scientist · ML/AI Engineer · Telecom Engineer</div>
+                    <div class="hero-badge">Data Scientist · Machine Learning/AI Engineer · Electrical & Telecommunications Engineer</div>
                     <h1>Kenneth Nyangweso</h1>
-                    <p>Data Scientist | Machine Learning & AI Engineer | Graduate Electrical & Telecommunications Engineer with 1.5+ years of experience building impactful AI solutions.</p>
+                    <p>Data Scientist | Machine Learning & AI Engineer | Graduate Electrical & Telecommunications Engineer with experience building impactful AI solutions.</p>
                     <div class="hero-stats">
                         <div class="stat"><span>20+</span><br>Projects</div>
                         <div class="stat"><span>5</span><br>Featured</div>
-                        <div class="stat"><span>1.5+ yrs</span><br>Experience</div>
+                        <div class="stat"><span>2 yrs</span><br>Experience</div>
                     </div>
                     <a href="#projects" class="btn">Explore Work →</a>
                 </div>
                 <div class="hero-image">
-                    <div class="profile-placeholder">
-                        <i class="fas fa-user-circle"></i>
-                    </div>
+                    <!-- FIXED: Use online image URL instead of local file path -->
+                    <!-- Replace the src URL below with your actual image URL from GitHub or Imgur -->
+                    <img src="https://avatars.githubusercontent.com/u/155610300?v=4" alt="Kenneth Nyangweso" class="profile-pic">
                     <p style="margin-top: 1rem;">AI Engineer | MLOps Enthusiast</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about">
+            <div class="container">
+                <h2 class="section-title">📡 About Me</h2>
+                <div class="about-card">
+                    <p>I'm <strong>Kenneth Nyangweso</strong>, a <strong>Data Scientist & AI/ML Engineer</strong> with a background in Electrical & Telecommunications Engineering. I have built end-to-end machine learning solutions from computer vision and NLP to predictive analytics and geospatial risk.</p>
+                    <br>
+                    <p>My passion lies at the intersection of robust engineering and algorithmic innovation. I've delivered models that achieve high accuracy in real-world situations for tumor detection, predict customer churn, and forecast aviation accident trends. I'm committed to building AI solutions that make a real-world impact.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills">
+            <div class="container">
+                <h2 class="section-title">⚙️ Technical Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3><i class="fas fa-code"></i> Programming Languages</h3>
+                        <div class="skill-items">
+                            <span class="skill-item">Python</span>
+                            <span class="skill-item">SQL</span>
+                            <span class="skill-item">JavaScript</span>
+                            <span class="skill-item">html</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3><i class="fas fa-brain"></i> ML & Deep Learning</h3>
+                        <div class="skill-items">
+                            <span class="skill-item">TensorFlow</span>
+                            <span class="skill-item">PyTorch</span>
+                            <span class="skill-item">Scikit-learn</span>
+                            <span class="skill-item">Prediction</span>
+                            <span class="skill-item">Computer Vision</span>
+                            <span class="skill-item">NLP</span>
+                            <span class="skill-item">Time Series</span>
+                            <span class="skill-item">Neural Networks</span>
+                            <span class="skill-item">GIS</span>
+                            <span class="skill-item">LLMs</span>
+                            <span class="skill-item">Hugging Face</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3><i class="fas fa-chart-line"></i> Data & Visualization</h3>
+                        <div class="skill-items">
+                            <span class="skill-item">Pandas</span>
+                            <span class="skill-item">NumPy</span>
+                            <span class="skill-item">Matplotlib</span>
+                            <span class="skill-item">Seaborn</span>
+                            <span class="skill-item">Tableau</span>
+                            <span class="skill-item">Power BI</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3><i class="fas fa-tools"></i> Tools & Platforms</h3>
+                        <div class="skill-items">
+                            <span class="skill-item">Docker</span>
+                            <span class="skill-item">FastAPI</span>
+                            <span class="skill-item">Git</span>
+                            <span class="skill-item">GitHub</span>
+                            <span class="skill-item">Visual Studio Code</span>
+                            <span class="skill-item">Jupyter</span>
+                            <span class="skill-item"> Google Colab</span>
+                            <span class="skill-item">Streamlit</span>
+                            <span class="skill-item">GeoPandas</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -370,21 +489,22 @@
                     <div class="project-card">
                         <div class="project-icon"><i class="fas fa-brain"></i></div>
                         <h3>Brain Tumor MRI Classification</h3>
-                        <p>CNN-based ResNet-50 model for automated tumor detection from MRI scans.</p>
+                        <p>CNN-based ensemble model (DenseNet, ResNet-50, EfficientNet) for automated tumor detection from MRI scans.</p>
                         <div class="project-tags">
-                            <span class="tag">CNN</span>
+                            <span class="tag">DenseNet</span>
                             <span class="tag">ResNet-50</span>
-                            <span class="tag">TensorFlow</span>
+                            <span class="tag">EfficientNet</span>
+                            <span class="tag">PyTorch</span>
                             <span class="tag">Python</span>
                         </div>
                         <div class="metrics">
-                            <div class="metric"><div class="metric-value">96.2%</div><div>Accuracy</div></div>
-                            <div class="metric"><div class="metric-value">0.98</div><div>AUC</div></div>
-                            <div class="metric"><div class="metric-value">95.9%</div><div>F1 Score</div></div>
+                            <div class="metric"><div class="metric-value">98.84%</div><div class="metric-label">Accuracy</div></div>
+                            <div class="metric"><div class="metric-value">98.84%</div><div class="metric-label">Recall</div></div>
+                            <div class="metric"><div class="metric-value">98.84%</div><div class="metric-label">F1 Score</div></div>
+                            <div class="metric"><div class="metric-value">1.000</div><div class="metric-label">AUC</div></div>
                         </div>
                         <div class="project-links">
-                            <a href="#"><i class="fab fa-github"></i> GitHub Repo</a>
-                            <a href="#"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                            <a href="https://github.com/kennethnyangweso/Brain-Tumor-Image-Classification" target="_blank"><i class="fab fa-github"></i> GitHub Repo</a>
                         </div>
                     </div>
 
@@ -392,21 +512,23 @@
                     <div class="project-card">
                         <div class="project-icon"><i class="fas fa-comment-dots"></i></div>
                         <h3>Hate Speech Detection</h3>
-                        <p>BERT-based transformer model for detecting toxic content in social media.</p>
+                        <p>DeBERTa-based transformer model for detecting toxic content and hate speech in social media.</p>
                         <div class="project-tags">
-                            <span class="tag">BERT</span>
+                            <span class="tag">DeBERTa</span>
+                            <span class="tag">DistilBERT</span>
+                            <span class="tag">SVM</span>
+                            <span class="tag">TF-IDF</span>
                             <span class="tag">NLP</span>
                             <span class="tag">PyTorch</span>
-                            <span class="tag">Transformers</span>
+                            <span class="tag">Hugging Face</span>
+                            <span class="tag">Python</span>
                         </div>
                         <div class="metrics">
-                            <div class="metric"><div class="metric-value">92%</div><div>F1 Score</div></div>
-                            <div class="metric"><div class="metric-value">0.94</div><div>AUC</div></div>
-                            <div class="metric"><div class="metric-value">94.8%</div><div>Accuracy</div></div>
+                            <div class="metric"><div class="metric-value">70.48%</div><div class="metric-label">Accuracy</div></div>
+                            <div class="metric"><div class="metric-value">69.41%</div><div class="metric-label">F1 Score</div></div>
                         </div>
                         <div class="project-links">
-                            <a href="#"><i class="fab fa-github"></i> GitHub Repo</a>
-                            <a href="#"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                            <a href="https://github.com/kennethnyangweso/HATESPEECH-DETECTION-with-AI" target="_blank"><i class="fab fa-github"></i> GitHub Repo</a>
                         </div>
                     </div>
 
@@ -414,21 +536,22 @@
                     <div class="project-card">
                         <div class="project-icon"><i class="fas fa-chart-line"></i></div>
                         <h3>Customer Churn Prediction</h3>
-                        <p>XGBoost model predicting customer churn with actionable insights.</p>
+                        <p>Machine learning models (XGBoost, Random Forest, Logistic Regression) predicting customer churn.</p>
                         <div class="project-tags">
                             <span class="tag">XGBoost</span>
                             <span class="tag">Random Forest</span>
-                            <span class="tag">SHAP</span>
+                            <span class="tag">Scikit-learn</span>
+                            <span class="tag">Feature Engineering</span>
                             <span class="tag">Python</span>
                         </div>
                         <div class="metrics">
-                            <div class="metric"><div class="metric-value">86.7%</div><div>Accuracy</div></div>
-                            <div class="metric"><div class="metric-value">0.87</div><div>AUC</div></div>
-                            <div class="metric"><div class="metric-value">0.80</div><div>F1 Score</div></div>
+                            <div class="metric"><div class="metric-value">97.9%</div><div class="metric-label">Accuracy</div></div>
+                            <div class="metric"><div class="metric-value">0.94</div><div class="metric-label">AUC</div></div>
+                            <div class="metric"><div class="metric-value">96.0%</div><div class="metric-label">F1 Score</div></div>
+                            <div class="metric"><div class="metric-value">99.0%</div><div class="metric-label">Precision</div></div>
                         </div>
                         <div class="project-links">
-                            <a href="#"><i class="fab fa-github"></i> GitHub Repo</a>
-                            <a href="#"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                            <a href="https://github.com/kennethnyangweso/Project-Predicting-customer-churn-in-the-Telecommunications-Industry" target="_blank"><i class="fab fa-github"></i> GitHub Repo</a>
                         </div>
                     </div>
 
@@ -436,21 +559,20 @@
                     <div class="project-card">
                         <div class="project-icon"><i class="fas fa-water"></i></div>
                         <h3>Flood Risk Analysis with GIS</h3>
-                        <p>Spatial analysis and ML for flood risk mapping and prediction.</p>
+                        <p>Spatial analysis and ensemble ML for flood risk mapping and prediction in Kenya.</p>
                         <div class="project-tags">
                             <span class="tag">GIS</span>
                             <span class="tag">GeoPandas</span>
+                            <span class="tag">XGBoost</span>
                             <span class="tag">Random Forest</span>
-                            <span class="tag">QGIS</span>
+                            <span class="tag">Python</span>
                         </div>
                         <div class="metrics">
-                            <div class="metric"><div class="metric-value">89.2%</div><div>Accuracy</div></div>
-                            <div class="metric"><div class="metric-value">0.91</div><div>AUC</div></div>
-                            <div class="metric"><div class="metric-value">0.85</div><div>F1 Score</div></div>
+                            <div class="metric"><div class="metric-value">81.93%</div><div class="metric-label">Accuracy</div></div>
+                            <div class="metric"><div class="metric-value">81.84%</div><div class="metric-label">F1 Score</div></div>
                         </div>
                         <div class="project-links">
-                            <a href="#"><i class="fab fa-github"></i> GitHub Repo</a>
-                            <a href="#"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                            <a href="https://github.com/kennethnyangweso/Flood-Risk-Analysis-with-GIS" target="_blank"><i class="fab fa-github"></i> GitHub Repo</a>
                         </div>
                     </div>
 
@@ -458,74 +580,55 @@
                     <div class="project-card">
                         <div class="project-icon"><i class="fas fa-plane"></i></div>
                         <h3>Aviation Accidents Forecasting</h3>
-                        <p>Time series forecasting of aviation accident trends using Prophet.</p>
+                        <p>Time series forecasting of aviation accident trends using Prophet, ARIMA, and Tableau visualization.</p>
                         <div class="project-tags">
                             <span class="tag">Prophet</span>
                             <span class="tag">ARIMA</span>
                             <span class="tag">Time Series</span>
                             <span class="tag">Python</span>
+                            <span class="tag">Tableau</span>
                         </div>
                         <div class="metrics">
-                            <div class="metric"><div class="metric-value">12.8%</div><div>MAPE</div></div>
-                            <div class="metric"><div class="metric-value">0.89</div><div>R²</div></div>
-                            <div class="metric"><div class="metric-value">124.5</div><div>MAE</div></div>
+                            <div class="metric"><div class="metric-value">89.21</div><div class="metric-label">RMSE</div></div>
+                            <div class="metric"><div class="metric-value">79.96</div><div class="metric-label">MAE</div></div>
                         </div>
                         <div class="project-links">
-                            <a href="#"><i class="fab fa-github"></i> GitHub Repo</a>
-                            <a href="#"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                            <a href="https://github.com/kennethnyangweso/Aviation-Accident-Trend-Forecasting" target="_blank"><i class="fab fa-github"></i> GitHub Repo</a>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- About Section -->
-        <section id="about">
-            <div class="container">
-                <h2 class="section-title">📡 About Me</h2>
-                <div class="about-card">
-                    <p>I'm <strong>Kenneth Nyangweso</strong>, a <strong>Data Scientist & AI/ML Engineer</strong> with a background in Electrical & Telecommunications Engineering. Over 1.5 years, I have built end-to-end machine learning solutions — from medical imaging and NLP to predictive analytics and geospatial risk.</p>
-                    <br>
-                    <p>🧠 My passion lies at the intersection of robust engineering and algorithmic innovation. I've delivered models that reduce customer churn, forecast aviation risks, and detect hate speech.</p>
-                    <div class="tech-stack">
-                        <span class="tech-item">Python</span>
-                        <span class="tech-item">TensorFlow</span>
-                        <span class="tech-item">PyTorch</span>
-                        <span class="tech-item">Scikit-learn</span>
-                        <span class="tech-item">Pandas</span>
-                        <span class="tech-item">GIS</span>
-                        <span class="tech-item">Docker</span>
-                        <span class="tech-item">FastAPI</span>
-                        <span class="tech-item">SQL</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
+        <!-- Contact / Connect Section -->
         <section id="contact">
             <div class="container">
                 <div class="contact-section">
-                    <h2>Let's Connect 🤝</h2>
-                    <p>Open to collaborations, AI research, or engineering roles.</p>
+                    <h2>🤝 Let's Connect</h2>
+                    <p>Open to collaborations, AI research, or engineering roles. Reach out anytime!</p>
                     <div class="contact-info">
                         <div class="contact-item">
                             <i class="fas fa-envelope"></i>
                             <a href="mailto:kennethnyangweso99@gmail.com">kennethnyangweso99@gmail.com</a>
                         </div>
                         <div class="contact-item">
-                            <i class="fas fa-phone"></i>
+                            <i class="fas fa-phone-alt"></i>
                             <a href="tel:+254719354470">+254 719 354 470</a>
                         </div>
                         <div class="contact-item">
                             <i class="fab fa-linkedin"></i>
-                            <a href="https://linkedin.com/in/kenneth-nyangweso">LinkedIn</a>
+                            <a href="https://linkedin.com/in/kenneth-nyangweso" target="_blank">linkedin.com/in/kenneth-nyangweso</a>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fab fa-github"></i>
+                            <a href="https://github.com/kennethnyangweso" target="_blank">github.com/kennethnyangweso</a>
                         </div>
                     </div>
                     <div class="contact-icons">
-                        <a href="https://github.com/kenneth-nyangweso"><i class="fab fa-github"></i></a>
-                        <a href="https://linkedin.com/in/kenneth-nyangweso"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/kennethnyangweso" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://linkedin.com/in/kenneth-nyangweso" target="_blank"><i class="fab fa-linkedin"></i></a>
                         <a href="mailto:kennethnyangweso99@gmail.com"><i class="fas fa-envelope"></i></a>
+                        <a href="tel:+254719354470"><i class="fas fa-phone-alt"></i></a>
                     </div>
                 </div>
             </div>
